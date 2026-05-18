@@ -1,0 +1,21 @@
+name: Build and Deploy ML (preprod)
+
+on:
+  push:
+    branches: [preprod]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: |
+          docker build -t premier-ml:${{ github.sha }} -t premier-ml:preprod .
+          docker save premier-ml:${{ github.sha }} | sudo k3s ctr images import -
+
+      - name: Deploy to K3s
+        run: |
+          kubectl set image deployment/ml ml=premier-ml:${{ github.sha }} -n preprod
+          kubectl rollout status deployment/ml -n preprod --timeout=180s
