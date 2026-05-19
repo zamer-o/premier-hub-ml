@@ -20,7 +20,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier
-from imblearn.over_sampling import SMOTE
 
 POSITIONS = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
 DATA_PATH = os.path.join("data", "transfers_enriched.csv")
@@ -41,10 +40,12 @@ FEATURES = [
 
 TARGET = "transferred"
 
+RAW_FEATURES = [f if f != "position_encoded" else "position" for f in FEATURES]
+
 
 def load_and_clean(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
-    df = df.dropna(subset=FEATURES + [TARGET])
+    df = df.dropna(subset=RAW_FEATURES + [TARGET])
     df["market_value_eur"] = df["market_value_eur"].clip(upper=200_000_000)
     df["goals_per90"] = df["goals_per90"].clip(0, 3)
     df["assists_per90"] = df["assists_per90"].clip(0, 2)
@@ -79,22 +80,26 @@ def train():
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-    print("[train] Aplicando SMOTE para balancear clases...")
-    sm = SMOTE(random_state=42)
-    X_train_res, y_train_res = sm.fit_resample(X_train, y_train)
+    neg, pos = (y_train == 0).sum(), (y_train == 1).sum()
+    print(f"[train] Distribución train — neg={neg}, pos={pos}")
 
-    print("[train] Entrenando XGBoost...")
+    print("[train] Entrenando XGBoost con early stopping…")
     model = XGBClassifier(
-        n_estimators=300,
-        max_depth=6,
+        n_estimators=500,
+        max_depth=4,
         learning_rate=0.05,
         subsample=0.8,
-        colsample_bytree=0.8,
-        use_label_encoder=False,
+        colsample_bytree=0.7,
+        min_child_weight=10,
+        gamma=1.0,
+        reg_alpha=0.5,
+        reg_lambda=2.0,
         eval_metric="logloss",
+        early_stopping_rounds=30,
         random_state=42,
+        n_jobs=-1,
     )
-    model.fit(X_train_res, y_train_res, eval_set=[(X_test, y_test)], verbose=50)
+    model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=50)
 
     y_pred = model.predict(X_test)
     print("\n[train] Reporte de clasificación:")
