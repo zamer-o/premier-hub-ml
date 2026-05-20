@@ -125,18 +125,44 @@ def simulate(transfers: list[dict]) -> dict[str, Any]:
             base_pts_acc[c].append(base_pts[c])
             adj_pts_acc[c].append(adj_pts[c])
 
+    avg_base_pts = {c: float(np.mean(base_pts_acc[c])) for c in clubs}
     avg_adj_pts = {c: float(np.mean(adj_pts_acc[c])) for c in clubs}
     sorted_clubs = sorted(clubs, key=lambda c: avg_adj_pts[c], reverse=True)
 
+    # Top 4 y descenso por iteración
+    base_top4: dict[str, int] = {c: 0 for c in clubs}
+    adj_top4: dict[str, int] = {c: 0 for c in clubs}
+    base_rel: dict[str, int] = {c: 0 for c in clubs}
+    adj_rel: dict[str, int] = {c: 0 for c in clubs}
+
+    for i in range(ITERATIONS):
+        base_sorted = sorted(clubs, key=lambda c: base_pts_acc[c][i], reverse=True)
+        adj_sorted = sorted(clubs, key=lambda c: adj_pts_acc[c][i], reverse=True)
+        for c in base_sorted[:4]:
+            base_top4[c] += 1
+        for c in base_sorted[-3:]:
+            base_rel[c] += 1
+        for c in adj_sorted[:4]:
+            adj_top4[c] += 1
+        for c in adj_sorted[-3:]:
+            adj_rel[c] += 1
+
     table = []
     for pos, club in enumerate(sorted_clubs, start=1):
-        base_odds = base_titles[club] / ITERATIONS * 100
-        adj_odds = adj_titles[club] / ITERATIONS * 100
+        base_title_pct = base_titles[club] / ITERATIONS * 100
+        adj_title_pct = adj_titles[club] / ITERATIONS * 100
         table.append({
             "position": pos,
             "club": club,
             "club_id": base_ratings["clubs"][club]["id"],
-            "title_odds_delta": round(adj_odds - base_odds, 2),
+            "avg_pts": round(avg_adj_pts[club], 1),
+            "avg_pts_base": round(avg_base_pts[club], 1),
+            "title_probability": round(adj_title_pct, 1),
+            "title_odds_delta": round(adj_title_pct - base_title_pct, 2),
+            "top4_probability": round(adj_top4[club] / ITERATIONS * 100, 1),
+            "top4_delta": round((adj_top4[club] - base_top4[club]) / ITERATIONS * 100, 2),
+            "relegation_probability": round(adj_rel[club] / ITERATIONS * 100, 1),
+            "relegation_delta": round((adj_rel[club] - base_rel[club]) / ITERATIONS * 100, 2),
         })
 
     return {"table": table}

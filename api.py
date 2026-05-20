@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
+import json
+import os
 import uvicorn
 
 app = FastAPI(title="Premier Hub ML Service", version="1.0.0")
@@ -44,7 +46,14 @@ class ClubResult(BaseModel):
     position: int
     club: str
     club_id: int
+    avg_pts: float
+    avg_pts_base: float
+    title_probability: float
     title_odds_delta: float
+    top4_probability: float
+    top4_delta: float
+    relegation_probability: float
+    relegation_delta: float
 
 class SimulateResponse(BaseModel):
     table: List[ClubResult]
@@ -90,6 +99,15 @@ async def rewind_match(req: RewindRequest):
         return rewind(req.match_data, [m.model_dump() for m in req.modifications])
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/ml/iconic-matches")
+async def iconic_matches():
+    path = os.path.join("data", "iconic_matches.json")
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="iconic_matches.json not found")
+    with open(path, encoding="utf-8") as f:
+        return {"matches": json.load(f)}
 
 
 @app.get("/health")
