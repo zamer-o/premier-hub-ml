@@ -15,6 +15,10 @@ ENCODER_PATH = os.path.join("models", "transfer_predictor", "encoder.pkl")
 
 POSITIONS = ["Goalkeeper", "Defender", "Midfielder", "Forward"]
 
+# Load once at module import time — avoid re-reading from disk on every request
+_model = joblib.load(MODEL_PATH) if os.path.exists(MODEL_PATH) else None
+_encoder = joblib.load(ENCODER_PATH) if os.path.exists(ENCODER_PATH) else None
+
 FEATURE_REASONS = {
     "market_value_eur": ("alto valor de mercado", "bajo valor de mercado"),
     "goals_per90": ("anotador prolífico", "aportación ofensiva limitada"),
@@ -112,16 +116,13 @@ def _build_reasons(player_stats: dict, target_club_stats: dict, model=None, feat
 
 
 def predict(player_stats: dict, target_club_stats: dict) -> dict[str, Any]:
-    if not os.path.exists(MODEL_PATH):
+    if _model is None or _encoder is None:
         result = _heuristic_predict(player_stats, target_club_stats)
         reasons = _build_reasons(player_stats, target_club_stats)
         return {**result, "reasons": reasons}
 
-    model = joblib.load(MODEL_PATH)
-    le = joblib.load(ENCODER_PATH)
-
     position_raw = player_stats.get("position", "Midfielder")
-    position_enc = le.transform([position_raw if position_raw in POSITIONS else "Midfielder"])[0]
+    position_enc = _encoder.transform([position_raw if position_raw in POSITIONS else "Midfielder"])[0]
 
     feature_vector = np.array([[
         player_stats.get("player_age", 25),
@@ -135,8 +136,8 @@ def predict(player_stats: dict, target_club_stats: dict) -> dict[str, Any]:
         int(target_club_stats.get("position_needed", False)),
     ]])
 
-    probability = float(model.predict_proba(feature_vector)[0][1])
-    reasons = _build_reasons(player_stats, target_club_stats, model, feature_vector)
+    probability = float(_model.predict_proba(feature_vector)[0][1])
+    reasons = _build_reasons(player_stats, target_club_stats, _model, feature_vector)
 
     return {
         "probability": round(probability * 100, 1),
