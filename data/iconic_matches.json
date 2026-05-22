@@ -1,0 +1,952 @@
+[
+  {
+    "fixture_id": 157112,
+    "title": "Southampton 0-9 Leicester",
+    "description": "Récord histórico en la Premier League. Leicester logró una goleada monumental ante Southampton en la temporada 2019/20.",
+    "date": "2019-10-25",
+    "season": 2019,
+    "home_team": {
+      "id": 41,
+      "name": "Southampton"
+    },
+    "away_team": {
+      "id": 46,
+      "name": "Leicester"
+    },
+    "score": {
+      "home": 0,
+      "away": 9
+    }
+  },
+  {
+    "fixture_id": 592357,
+    "title": "Manchester United 9-0 Southampton",
+    "description": "Récord histórico en la Premier League. Manchester United logró una goleada monumental ante Southampton en la temporada 2020/21.",
+    "date": "2021-02-02",
+    "season": 2020,
+    "home_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "away_team": {
+      "id": 41,
+      "name": "Southampton"
+    },
+    "score": {
+      "home": 9,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 867981,
+    "title": "Liverpool 9-0 Bournemouth",
+    "description": "Récord histórico en la Premier League. Liverpool logró una goleada monumental ante Bournemouth en la temporada 2022/23.",
+    "date": "2022-08-27",
+    "season": 2022,
+    "home_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "away_team": {
+      "id": 35,
+      "name": "Bournemouth"
+    },
+    "score": {
+      "home": 9,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 868033,
+    "title": "Manchester City 6-3 Manchester United",
+    "description": "Récord histórico en la Premier League. Manchester City logró una goleada monumental ante Manchester United en la temporada 2022/23.",
+    "date": "2022-10-02",
+    "season": 2022,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "score": {
+      "home": 6,
+      "away": 3
+    }
+  },
+  {
+    "fixture_id": 868201,
+    "title": "Liverpool 7-0 Manchester United",
+    "description": "Una tarde de ensueño para Liverpool. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2022/23).",
+    "date": "2023-03-05",
+    "season": 2022,
+    "home_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "away_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "score": {
+      "home": 7,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 157071,
+    "title": "Manchester City 8-0 Watford",
+    "description": "Una tarde de ensueño para Manchester City. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2019/20).",
+    "date": "2019-09-21",
+    "season": 2019,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 38,
+      "name": "Watford"
+    },
+    "score": {
+      "home": 8,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 1035096,
+    "title": "Sheffield Utd 0-8 Newcastle",
+    "description": "Una tarde de ensueño para Newcastle. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2023/24).",
+    "date": "2023-09-24",
+    "season": 2023,
+    "home_team": {
+      "id": 62,
+      "name": "Sheffield Utd"
+    },
+    "away_team": {
+      "id": 34,
+      "name": "Newcastle"
+    },
+    "score": {
+      "home": 0,
+      "away": 8
+    }
+  },
+  {
+    "fixture_id": 11838,
+    "title": "Manchester City 7-2 Stoke City",
+    "description": "Récord histórico en la Premier League. Manchester City logró una goleada monumental ante Stoke City en la temporada 2017/18.",
+    "date": "2017-10-14",
+    "season": 2017,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 75,
+      "name": "Stoke City"
+    },
+    "score": {
+      "home": 7,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 157164,
+    "title": "Liverpool 5-2 Everton",
+    "description": "Una tarde de ensueño para Liverpool. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2019/20).",
+    "date": "2019-12-04",
+    "season": 2019,
+    "home_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "away_team": {
+      "id": 45,
+      "name": "Everton"
+    },
+    "score": {
+      "home": 5,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 592172,
+    "title": "Aston Villa 7-2 Liverpool",
+    "description": "Récord histórico en la Premier League. Aston Villa logró una goleada monumental ante Liverpool en la temporada 2020/21.",
+    "date": "2020-10-04",
+    "season": 2020,
+    "home_team": {
+      "id": 66,
+      "name": "Aston Villa"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 7,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 17320,
+    "title": "Hull City 1-7 Tottenham",
+    "description": "Una tarde de ensueño para Tottenham. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2016/17).",
+    "date": "2017-05-21",
+    "season": 2016,
+    "home_team": {
+      "id": 64,
+      "name": "Hull City"
+    },
+    "away_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "score": {
+      "home": 1,
+      "away": 7
+    }
+  },
+  {
+    "fixture_id": 260,
+    "title": "Liverpool 5-1 Arsenal",
+    "description": "El duelo de titanes más desequilibrado en años. Liverpool dominó de principio a fin con 5-1 en 2018/19.",
+    "date": "2018-12-29",
+    "season": 2018,
+    "home_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "away_team": {
+      "id": 42,
+      "name": "Arsenal"
+    },
+    "score": {
+      "home": 5,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 17688,
+    "title": "Arsenal 3-4 Liverpool",
+    "description": "Una tarde de ensueño para Liverpool. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2016/17).",
+    "date": "2016-08-14",
+    "season": 2016,
+    "home_team": {
+      "id": 42,
+      "name": "Arsenal"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 3,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 17461,
+    "title": "Everton 6-3 Bournemouth",
+    "description": "Récord histórico en la Premier League. Everton logró una goleada monumental ante Bournemouth en la temporada 2016/17.",
+    "date": "2017-02-04",
+    "season": 2016,
+    "home_team": {
+      "id": 45,
+      "name": "Everton"
+    },
+    "away_team": {
+      "id": 35,
+      "name": "Bournemouth"
+    },
+    "score": {
+      "home": 6,
+      "away": 3
+    }
+  },
+  {
+    "fixture_id": 592274,
+    "title": "Crystal Palace 0-7 Liverpool",
+    "description": "Una tarde de ensueño para Liverpool. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2020/21).",
+    "date": "2020-12-19",
+    "season": 2020,
+    "home_team": {
+      "id": 52,
+      "name": "Crystal Palace"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 0,
+      "away": 7
+    }
+  },
+  {
+    "fixture_id": 710639,
+    "title": "Chelsea 7-0 Norwich",
+    "description": "Una tarde de ensueño para Chelsea. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2021/22).",
+    "date": "2021-10-23",
+    "season": 2021,
+    "home_team": {
+      "id": 49,
+      "name": "Chelsea"
+    },
+    "away_team": {
+      "id": 71,
+      "name": "Norwich"
+    },
+    "score": {
+      "home": 7,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 710643,
+    "title": "Manchester United 0-5 Liverpool",
+    "description": "El clásico Liverpool-United más desequilibrado en años. Liverpool dominó de principio a fin con 0-5 en 2021/22.",
+    "date": "2021-10-24",
+    "season": 2021,
+    "home_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 0,
+      "away": 5
+    }
+  },
+  {
+    "fixture_id": 710725,
+    "title": "Manchester City 7-0 Leeds",
+    "description": "Una tarde de ensueño para Manchester City. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2021/22).",
+    "date": "2021-12-14",
+    "season": 2021,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 63,
+      "name": "Leeds"
+    },
+    "score": {
+      "home": 7,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 710740,
+    "title": "Manchester City 6-3 Leicester",
+    "description": "Récord histórico en la Premier League. Manchester City logró una goleada monumental ante Leicester en la temporada 2021/22.",
+    "date": "2021-12-26",
+    "season": 2021,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 46,
+      "name": "Leicester"
+    },
+    "score": {
+      "home": 6,
+      "away": 3
+    }
+  },
+  {
+    "fixture_id": 1035454,
+    "title": "Arsenal 5-0 Chelsea",
+    "description": "El duelo de Londres más desequilibrado en años. Arsenal dominó de principio a fin con 5-0 en 2023/24.",
+    "date": "2024-04-23",
+    "season": 2023,
+    "home_team": {
+      "id": 42,
+      "name": "Arsenal"
+    },
+    "away_team": {
+      "id": 49,
+      "name": "Chelsea"
+    },
+    "score": {
+      "home": 5,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 1208171,
+    "title": "Tottenham 3-4 Chelsea",
+    "description": "Una tarde de ensueño para Chelsea. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2024/25).",
+    "date": "2024-12-08",
+    "season": 2024,
+    "home_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "away_team": {
+      "id": 49,
+      "name": "Chelsea"
+    },
+    "score": {
+      "home": 3,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 1208191,
+    "title": "Tottenham 3-6 Liverpool",
+    "description": "Récord histórico en la Premier League. Liverpool logró una goleada monumental ante Tottenham en la temporada 2024/25.",
+    "date": "2024-12-22",
+    "season": 2024,
+    "home_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 3,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 1208261,
+    "title": "Nottingham Forest 7-0 Brighton",
+    "description": "Una tarde de ensueño para Nottingham Forest. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2024/25).",
+    "date": "2025-02-01",
+    "season": 2024,
+    "home_team": {
+      "id": 65,
+      "name": "Nottingham Forest"
+    },
+    "away_team": {
+      "id": 51,
+      "name": "Brighton"
+    },
+    "score": {
+      "home": 7,
+      "away": 0
+    }
+  },
+  {
+    "fixture_id": 192385,
+    "title": "Newcastle 6-2 Norwich",
+    "description": "Una tarde de ensueño para Newcastle. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2015/16).",
+    "date": "2015-10-18",
+    "season": 2015,
+    "home_team": {
+      "id": 34,
+      "name": "Newcastle"
+    },
+    "away_team": {
+      "id": 71,
+      "name": "Norwich"
+    },
+    "score": {
+      "home": 6,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 192404,
+    "title": "Everton 6-2 Sunderland",
+    "description": "Una tarde de ensueño para Everton. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2015/16).",
+    "date": "2015-11-01",
+    "season": 2015,
+    "home_team": {
+      "id": 45,
+      "name": "Everton"
+    },
+    "away_team": {
+      "id": 746,
+      "name": "Sunderland"
+    },
+    "score": {
+      "home": 6,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 195,
+    "title": "Arsenal 4-2 Tottenham",
+    "description": "Un partido de infarto con 6 goles. Arsenal 4-2 Tottenham, temporada 2018/19.",
+    "date": "2018-12-02",
+    "season": 2018,
+    "home_team": {
+      "id": 42,
+      "name": "Arsenal"
+    },
+    "away_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "score": {
+      "home": 4,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 239,
+    "title": "Everton 2-6 Tottenham",
+    "description": "Una tarde de ensueño para Tottenham. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2018/19).",
+    "date": "2018-12-23",
+    "season": 2018,
+    "home_team": {
+      "id": 45,
+      "name": "Everton"
+    },
+    "away_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "score": {
+      "home": 2,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 592276,
+    "title": "Manchester United 6-2 Leeds",
+    "description": "Una tarde de ensueño para Manchester United. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2020/21).",
+    "date": "2020-12-20",
+    "season": 2020,
+    "home_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "away_team": {
+      "id": 63,
+      "name": "Leeds"
+    },
+    "score": {
+      "home": 6,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 592831,
+    "title": "Manchester United 2-4 Liverpool",
+    "description": "Un partido de infarto con 6 goles. Manchester United 2-4 Liverpool, temporada 2020/21.",
+    "date": "2021-05-13",
+    "season": 2020,
+    "home_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 2,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 710798,
+    "title": "Chelsea 2-4 Arsenal",
+    "description": "Un partido de infarto con 6 goles. Chelsea 2-4 Arsenal, temporada 2021/22.",
+    "date": "2022-04-20",
+    "season": 2021,
+    "home_team": {
+      "id": 49,
+      "name": "Chelsea"
+    },
+    "away_team": {
+      "id": 42,
+      "name": "Arsenal"
+    },
+    "score": {
+      "home": 2,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 868024,
+    "title": "Tottenham 6-2 Leicester",
+    "description": "Una tarde de ensueño para Tottenham. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2022/23).",
+    "date": "2022-09-17",
+    "season": 2022,
+    "home_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "away_team": {
+      "id": 46,
+      "name": "Leicester"
+    },
+    "score": {
+      "home": 6,
+      "away": 2
+    }
+  },
+  {
+    "fixture_id": 1208040,
+    "title": "Wolves 2-6 Chelsea",
+    "description": "Una tarde de ensueño para Chelsea. 8 goles en un partido que quedó grabado en la memoria del fútbol inglés (2024/25).",
+    "date": "2024-08-25",
+    "season": 2024,
+    "home_team": {
+      "id": 39,
+      "name": "Wolves"
+    },
+    "away_team": {
+      "id": 49,
+      "name": "Chelsea"
+    },
+    "score": {
+      "home": 2,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 192369,
+    "title": "Manchester City 6-1 Newcastle",
+    "description": "Una tarde de ensueño para Manchester City. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2015/16).",
+    "date": "2015-10-03",
+    "season": 2015,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 34,
+      "name": "Newcastle"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 192425,
+    "title": "Tottenham 4-1 West Ham",
+    "description": "El derbi del este de Londres se resolvió con contundencia. Tottenham ganó 4-1 en un resultado que sorprendió a todos en 2015/16.",
+    "date": "2015-11-22",
+    "season": 2015,
+    "home_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "away_team": {
+      "id": 48,
+      "name": "West Ham"
+    },
+    "score": {
+      "home": 4,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 192517,
+    "title": "Norwich 4-5 Liverpool",
+    "description": "Récord histórico en la Premier League. Liverpool logró una goleada monumental ante Norwich en la temporada 2015/16.",
+    "date": "2016-01-23",
+    "season": 2015,
+    "home_team": {
+      "id": 71,
+      "name": "Norwich"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 4,
+      "away": 5
+    }
+  },
+  {
+    "fixture_id": 17622,
+    "title": "Bournemouth 6-1 Hull City",
+    "description": "Una tarde de ensueño para Bournemouth. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2016/17).",
+    "date": "2016-10-15",
+    "season": 2016,
+    "home_team": {
+      "id": 35,
+      "name": "Bournemouth"
+    },
+    "away_team": {
+      "id": 64,
+      "name": "Hull City"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 17590,
+    "title": "Liverpool 6-1 Watford",
+    "description": "Una tarde de ensueño para Liverpool. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2016/17).",
+    "date": "2016-11-06",
+    "season": 2016,
+    "home_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "away_team": {
+      "id": 38,
+      "name": "Watford"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 17575,
+    "title": "Swansea 5-4 Crystal Palace",
+    "description": "Récord histórico en la Premier League. Swansea logró una goleada monumental ante Crystal Palace en la temporada 2016/17.",
+    "date": "2016-11-26",
+    "season": 2016,
+    "home_team": {
+      "id": 76,
+      "name": "Swansea"
+    },
+    "away_team": {
+      "id": 52,
+      "name": "Crystal Palace"
+    },
+    "score": {
+      "home": 5,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 17327,
+    "title": "Leicester 1-6 Tottenham",
+    "description": "Una tarde de ensueño para Tottenham. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2016/17).",
+    "date": "2017-05-18",
+    "season": 2016,
+    "home_team": {
+      "id": 46,
+      "name": "Leicester"
+    },
+    "away_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "score": {
+      "home": 1,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 11540,
+    "title": "Tottenham 5-4 Leicester",
+    "description": "Récord histórico en la Premier League. Tottenham logró una goleada monumental ante Leicester en la temporada 2017/18.",
+    "date": "2018-05-13",
+    "season": 2017,
+    "home_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "away_team": {
+      "id": 46,
+      "name": "Leicester"
+    },
+    "score": {
+      "home": 5,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 82,
+    "title": "Manchester City 6-1 Huddersfield",
+    "description": "Una tarde de ensueño para Manchester City. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2018/19).",
+    "date": "2018-08-19",
+    "season": 2018,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 37,
+      "name": "Huddersfield"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 171,
+    "title": "Manchester City 6-1 Southampton",
+    "description": "Una tarde de ensueño para Manchester City. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2018/19).",
+    "date": "2018-11-04",
+    "season": 2018,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 41,
+      "name": "Southampton"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 157226,
+    "title": "Aston Villa 1-6 Manchester City",
+    "description": "Una tarde de ensueño para Manchester City. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2019/20).",
+    "date": "2020-01-12",
+    "season": 2019,
+    "home_team": {
+      "id": 66,
+      "name": "Aston Villa"
+    },
+    "away_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "score": {
+      "home": 1,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 592177,
+    "title": "Manchester United 1-6 Tottenham",
+    "description": "Una tarde de ensueño para Tottenham. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2020/21).",
+    "date": "2020-10-04",
+    "season": 2020,
+    "home_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "away_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "score": {
+      "home": 1,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 710687,
+    "title": "Everton 1-4 Liverpool",
+    "description": "El derbi de Merseyside se resolvió con contundencia. Liverpool ganó 4-1 en un resultado que sorprendió a todos en 2021/22.",
+    "date": "2021-12-01",
+    "season": 2021,
+    "home_team": {
+      "id": 45,
+      "name": "Everton"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 1,
+      "away": 4
+    }
+  },
+  {
+    "fixture_id": 710830,
+    "title": "Manchester City 4-1 Manchester United",
+    "description": "El derbi de Manchester se resolvió con contundencia. Manchester City ganó 4-1 en un resultado que sorprendió a todos en 2021/22.",
+    "date": "2022-03-06",
+    "season": 2021,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    "score": {
+      "home": 4,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 868249,
+    "title": "Leeds 1-6 Liverpool",
+    "description": "Una tarde de ensueño para Liverpool. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2022/23).",
+    "date": "2023-04-17",
+    "season": 2022,
+    "home_team": {
+      "id": 63,
+      "name": "Leeds"
+    },
+    "away_team": {
+      "id": 40,
+      "name": "Liverpool"
+    },
+    "score": {
+      "home": 1,
+      "away": 6
+    }
+  },
+  {
+    "fixture_id": 868265,
+    "title": "Newcastle 6-1 Tottenham",
+    "description": "Una tarde de ensueño para Newcastle. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2022/23).",
+    "date": "2023-04-23",
+    "season": 2022,
+    "home_team": {
+      "id": 34,
+      "name": "Newcastle"
+    },
+    "away_team": {
+      "id": 47,
+      "name": "Tottenham"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 1035098,
+    "title": "Aston Villa 6-1 Brighton",
+    "description": "Una tarde de ensueño para Aston Villa. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2023/24).",
+    "date": "2023-09-30",
+    "season": 2023,
+    "home_team": {
+      "id": 66,
+      "name": "Aston Villa"
+    },
+    "away_team": {
+      "id": 51,
+      "name": "Brighton"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  },
+  {
+    "fixture_id": 1035142,
+    "title": "Manchester City 6-1 Bournemouth",
+    "description": "Una tarde de ensueño para Manchester City. 7 goles en un partido que quedó grabado en la memoria del fútbol inglés (2023/24).",
+    "date": "2023-11-04",
+    "season": 2023,
+    "home_team": {
+      "id": 50,
+      "name": "Manchester City"
+    },
+    "away_team": {
+      "id": 35,
+      "name": "Bournemouth"
+    },
+    "score": {
+      "home": 6,
+      "away": 1
+    }
+  }
+]
