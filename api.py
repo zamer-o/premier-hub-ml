@@ -1,9 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List
 import json
 import os
 import uvicorn
+
+from models.transfer_predictor.predict import predict as predict_transfer_model
+from models.season_simulator.simulate import simulate as simulate_season_model
+from models.match_rewind.rewind import rewind as rewind_match_model
 
 app = FastAPI(title="Premier Hub ML Service", version="1.0.0")
 
@@ -25,8 +29,7 @@ class TransferResponse(BaseModel):
 @app.post("/ml/transfer", response_model=TransferResponse)
 async def predict_transfer(req: TransferRequest):
     try:
-        from models.transfer_predictor.predict import predict
-        return predict(req.player_stats, req.target_club_stats)
+        return predict_transfer_model(req.player_stats, req.target_club_stats)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -62,24 +65,18 @@ class SimulateResponse(BaseModel):
 @app.post("/ml/simulate", response_model=SimulateResponse)
 async def simulate_season(req: SimulateRequest):
     try:
-        from models.season_simulator.simulate import simulate
-        return simulate([t.model_dump() for t in req.transfers])
+        return simulate_season_model([t.model_dump() for t in req.transfers])
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 # ── Classic Match Rewind ──────────────────────────────────────────────────────
 
-class Modification(BaseModel):
-    type: str  # "remove_player" | "change_substitution"
-    player_id: int
-    team: str  # "home" | "away"
-    minute: Optional[int] = None
-
 class RewindRequest(BaseModel):
     match_id: int
-    match_data: dict  # {home_team, away_team, stats: {shots, shots_on_target, ...}, events, lineups}
-    modifications: List[Modification]
+    match_data: dict             # {score, stats, match_minutes}
+    removed_goals: List[dict] = []      # [{team, minute}]
+    removed_red_cards: List[dict] = []  # [{team, minute}]
 
 class KeyChange(BaseModel):
     description: str
@@ -95,8 +92,11 @@ class RewindResponse(BaseModel):
 @app.post("/ml/rewind", response_model=RewindResponse)
 async def rewind_match(req: RewindRequest):
     try:
-        from models.match_rewind.rewind import rewind
-        return rewind(req.match_data, [m.model_dump() for m in req.modifications])
+        return rewind_match_model(
+            req.match_data,
+            removed_goals=req.removed_goals,
+            removed_red_cards=req.removed_red_cards,
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
