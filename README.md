@@ -26,7 +26,9 @@ El servicio escucha en el puerto **8080** y forma parte del stack desplegado en
 - [Entrenamiento y generación de datos](#entrenamiento-y-generación-de-datos)
 - [Variables de entorno](#variables-de-entorno)
 - [Docker](#docker)
-- [Despliegue (CI/CD)](#despliegue-cicd)
+- [Despliegue en Kubernetes (K3s)](#despliegue-en-kubernetes-k3s)
+  - [Despliegue automatizado (CI/CD)](#despliegue-automatizado-cicd)
+  - [Despliegue manual](#despliegue-manual)
 - [Notas de seguridad](#notas-de-seguridad)
 
 ---
@@ -259,31 +261,121 @@ código y arranca `uvicorn api:app` en el puerto **8080**.
 
 ---
 
-## Despliegue (CI/CD)
+## Despliegue en Kubernetes (K3s)
 
-El despliegue es automático mediante **GitHub Actions** sobre un **runner
-self-hosted** (la propia máquina con K3s). No hay registry externo: la imagen se
-construye, se importa a `containerd` de K3s y se actualiza el `Deployment`.
+El servicio corre en un clúster **K3s** de un solo nodo, en los namespaces
+`prod` y `preprod`. Hay **dos caminos** para desplegar: el **automatizado**
+(GitHub Actions, el habitual) y el **manual** con `kubectl` (para el primer
+arranque, recuperación o cuando el runner no está disponible). Ambos hacen lo
+mismo por debajo.
+
+**Características del entorno (importan para entender el deploy):**
+
+- **Sin registry externo.** Las imágenes se construyen en el propio nodo y se
+  importan a `containerd` de K3s (`k3s ctr images import`). Por eso los
+  manifiestos usan `imagePullPolicy: Never` (K3s usa la imagen local, nunca la
+  baja de un registry).
+- **Manifiestos base** (Deployment + Service) viven en el repo de
+  infraestructura **`premier-hub-infra`**, no en este repo:
+  - `k8s/prod/ml-deployment.yaml` · `k8s/prod/ml-service.yaml`
+  - `k8s/preprod/ml-deployment.yaml` · `k8s/preprod/ml-service.yaml`
+- **Service.** Tipo `ClusterIP`, puerto `8080`. En **prod** tiene IP fija
+  `10.43.53.230` porque el backend la usa directa en `ML_SERVICE_URL`
+  (el pod corre con `dnsPolicy: None`, que no resuelve nombres internos del
+  clúster).
+- **Recursos por pod:** requests `512Mi` / `250m` CPU, limits `2Gi` / `1000m` CPU.
+- **Réplicas:** 1 por namespace.
+
+| Ambiente | Namespace | Tag de imagen | Rama que despliega |
+| --- | --- | --- | --- |
+| Producción | `prod` | `premier-ml:latest` | `main` |
+| Pre-producción | `preprod` | `premier-ml:preprod` | `preprod` |
+
+### Despliegue automatizado (CI/CD)
+
+Es el flujo normal. Mediante **GitHub Actions** sobre un **runner self-hosted**
+(la propia máquina con K3s), cada push a la rama correspondiente construye la
+imagen, la importa a K3s y actualiza el `Deployment`.
 
 | Rama | Workflow | Destino |
 | --- | --- | --- |
-| `main` | `deploy-prod.yml` | namespace **`prod`** (`premier-ml:latest`) |
-| `preprod` | `deploy-preprod.yml` | namespace **`preprod`** (`premier-ml:preprod`) |
+| `main` | `.github/workflows/deploy-prod.yml` | namespace **`prod`** |
+| `preprod` | `.github/workflows/deploy-preprod.yml` | namespace **`preprod`** |
 
 Pasos que ejecuta cada workflow al hacer push:
 
 ```bash
-docker build -t premier-ml:<sha> -t premier-ml:latest .
+docker build -t premier-ml:<sha> -t premier-ml:latest .   # :preprod en preprod
 docker save premier-ml:<sha> | sudo k3s ctr images import -
 kubectl set image deployment/ml ml=premier-ml:<sha> -n <prod|preprod>
-kubectl rollout status deployment/ml -n <prod|preprod>
+kubectl rollout status deployment/ml -n <prod|preprod> --timeout=180s
 ```
 
 > **Atención:** cualquier push a `main` (incluido un cambio de documentación)
-> dispara una reconstrucción de imagen y un redeploy en `prod`. Los manifiestos
-> base del Deployment viven en el repo de infraestructura `premier-hub-infra`
-> (`k8s/prod/ml-deployment.yaml`, `k8s/preprod/ml-deployment.yaml`) y usan
-> `imagePullPolicy: Never` con imágenes locales de K3s.
+> dispara una reconstrucción de imagen y un redeploy en `prod`.
+
+### Despliegue manual
+
+Para hacerlo a mano (primer despliegue, runner caído o recuperación). Ejecutar
+desde la **raíz de este repo**; los pasos con manifiestos asumen tener clonado
+también `premier-hub-infra`. Reemplaza `<prod|preprod>` y el tag (`latest` para
+prod, `preprod` para preprod) según el ambiente.
+
+**1. Construir la imagen e importarla a K3s** (no hay registry):
+
+```bash
+# En prod usa el tag :latest ; en preprod usa :preprod
+docker build -t premier-ml:latest .
+docker save premier-ml:latest | sudo k3s ctr images import -
+
+# Verifica que la imagen quedó importada en containerd
+sudo k3s ctr images ls | grep premier-ml
+```
+
+**2a. Primer despliegue — aplicar los manifiestos** (desde `premier-hub-infra`):
+
+```bash
+# Crea el namespace si no existe
+kubectl create namespace prod --dry-run=client -o yaml | kubectl apply -f -
+
+# Aplica Deployment + Service del ambiente
+kubectl apply -f k8s/prod/ml-deployment.yaml
+kubectl apply -f k8s/prod/ml-service.yaml
+```
+
+**2b. Actualizar una versión ya desplegada** (equivalente a lo que hace el CI):
+
+```bash
+# Reconstruye con un tag único (p. ej. la fecha o el commit) y haz set image,
+# o fuerza el rollout si reutilizas el mismo tag :latest
+kubectl rollout restart deployment/ml -n prod
+# — o, con tag explícito —
+kubectl set image deployment/ml ml=premier-ml:<tag> -n prod
+```
+
+**3. Verificar el despliegue:**
+
+```bash
+kubectl rollout status deployment/ml -n prod --timeout=180s
+kubectl get pods -n prod -l app=ml
+kubectl logs -n prod -l app=ml --tail=50
+
+# Probar el endpoint de salud desde dentro del clúster
+kubectl port-forward -n prod svc/ml 8080:8080 &
+curl http://localhost:8080/health      # → {"status": "ok"}
+```
+
+**4. Rollback** si algo sale mal:
+
+```bash
+kubectl rollout undo deployment/ml -n prod
+kubectl rollout status deployment/ml -n prod
+```
+
+> **Nota:** como los manifiestos usan `imagePullPolicy: Never`, el paso 1
+> (construir + importar la imagen al nodo) es **obligatorio** antes de cualquier
+> `apply`/`set image`: si la imagen local no existe, el pod quedará en
+> `ErrImageNeverPull`.
 
 ---
 
