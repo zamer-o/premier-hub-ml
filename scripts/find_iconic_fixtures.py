@@ -16,7 +16,12 @@ import json
 import time
 import httpx
 
-API_KEY = os.environ.get("APIFOOTBALL_KEY", "45379e002ce9894ab347104d24165229")
+API_KEY = os.environ.get("APIFOOTBALL_KEY")
+if not API_KEY:
+    raise SystemExit(
+        "Falta la variable de entorno APIFOOTBALL_KEY. "
+        "Defínela antes de ejecutar (ver .env.example)."
+    )
 BASE_URL = "https://v3.football.api-sports.io"
 HEADERS = {"x-apisports-key": API_KEY}
 OUT_PATH = os.path.join("data", "iconic_matches.json")
